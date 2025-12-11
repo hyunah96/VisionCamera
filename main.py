@@ -20,7 +20,7 @@ def main():
             print("상부 카메라 프레임을 읽는데 실패하였습니다")
             break
         if not lowerRet:
-            print("하부 카메라 프레임을 읽는데 실패하였습니다")
+            print("하부 카메라 프레임을 읽는데 실패하였습니다!!!!")
             break
 
         upperResults = config.UPPER_MODEL
