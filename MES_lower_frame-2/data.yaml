@@ -1,0 +1,13 @@
+names:
+- lower_ng
+- lower_ok
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: mes_lower_frame
+  url: https://universe.roboflow.com/mesupper-frame/mes_lower_frame/dataset/2
+  version: 2
+  workspace: mesupper-frame
+test: ../test/images
+train: ../train/images
+val: ../valid/images
