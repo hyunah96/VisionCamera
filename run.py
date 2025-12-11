@@ -3,92 +3,21 @@ import cv2
 import pymcprotocol as protocol
 import time
 import datetime
+import config
 
 # 신호끊어주는것!!!
 # 신호끊어주는것!!!
 # 신호끊어주는것!!!
 # 신호끊어주는것!!!
 # 신호끊어주는것!!!
-
-
-# PLC_IP = "192.168.3.10"
-# PLC_PORT = 5028
-
-# # 상부 양품 완료 트리거 신호
-# DONE_ADDRESS_OK = 'M1550'
-# # 상부 불량 완료 트리거 신호
-# DONE_ADDRESS_NG = 'M1551'
-
-# # 판정 기준
-# OK_CLASSES = ["good"]   # 양품 클래스명
-# NG_CLASSES = ["bad"]    # 불량 클래스명
-
-# SAVE_PATH = "/Users/giyoma/Desktop/visionCamera/"
-
-
-
-
-
-    
-# 사진 저장
-def picture(frame):
-    print("picture")
-    imageName = fileName()
-    cv2.imwrite(imageName + ".jpg" ,frame)
-    
-    
-
-# plc 연결
-def connect_plc():
-    try:
-        plc = protocol.Type3E()
-        plc.connect(PLC_IP, PLC_PORT)
-        print(f"PLC 연결 성공: {PLC_IP}:{PLC_PORT}")
-        return plc
-    except Exception as ex:
-        print("PLC connect 예외:", ex)
-        return None
-
-# plc 연결 해제
-def disconnect_plc(plc):
-    if plc is None:
-        return
-    try:
-        plc.close()
-        print("PLC disconnect")
-    except Exception as ex:
-        print("PLC disconnect 예외:", ex)
-
 
 def main():
-    # 1) YOLO 모델 불러오기
-    #model = YOLO("/Users/giyoma/Desktop/visionCamera/upper/best.pt") #상부
-    model = YOLO("/Users/giyoma/Desktop/visionCamera/lower/best.pt") #하부
+    # YOLO 모델
     
-    # 2) 웹캠 열기
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        print("웹캠 열기 실패")
-        return
 
-    # 3) PLC 연결
-    plc = connect_plc()
-    if plc is None:
-        cap.release()
-        return
-
-    judgment = ""
-
-    #while True:
-    #plc 연결되어 있으면  
-    while plc is not None:    
-        # 카메라 프레임 읽기 
-        ret, frame = cap.read()
-        if not ret:
-            print("카메라 프레임 읽기 실패")
-            break
 
         # ---- YOLO 추론 ----
+        # yolo 이미지 추론 결과
         results = model(frame)[0]
         judgment = ""  # 초기화
 

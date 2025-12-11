@@ -1,6 +1,6 @@
+from ultralytics import YOLO
+
 ## global
-
-
 
 # PLC
 PLC_IP = "192.168.3.10"
@@ -19,3 +19,9 @@ LOWER_DONE_ADDRESS_NG = 'M1581'
 # NG_CLASSES = ["bad"]    # 불량 클래스명
 
 SAVE_PATH = "/Users/giyoma/Desktop/visionCamera/"
+
+#상부
+UPPER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/upper/best.pt")
+#하부
+LOWER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/lower/best.pt")
+
