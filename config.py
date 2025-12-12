@@ -21,7 +21,7 @@ LOWER_DONE_ADDRESS_NG = 'M1581'
 SAVE_PATH = "/Users/giyoma/Desktop/visionCamera/"
 
 #상부
-UPPER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/upper/best.pt")
+UPPER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/upperBest.pt")
 #하부
-LOWER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/lower/best.pt")
+LOWER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/lowerBest.pt")
 
