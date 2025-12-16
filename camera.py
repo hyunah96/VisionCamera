@@ -1,6 +1,10 @@
 import datetime
 import config
 import cv2
+import plc
+import time
+
+
 
 # 카메라 실행
 def openCamera(index):
@@ -9,7 +13,6 @@ def openCamera(index):
         print("웹캠을 여는데 실패하였습니다")
         return None
     if cap.isOpened():
-        print("웹캠 index ? " ,cap)
         return cap
     
 def findCamera():
@@ -22,14 +25,16 @@ def findCamera():
         if not cap.isOpened():
             print(f"카메라 연결 안된 곳 {i}")
 # 파일 이름
-def fileName():
+def fileName(result):
     print("fileName")
+    print("파일 result", result)
     now = datetime.datetime.now()
     name_str = now.strftime("%Y-%m-%d-%H-%M-%S")
-    imageName = config.SAVE_PATH + name_str
+    imageName = config.SAVE_PATH + name_str + result
     return imageName
 
 # 사진 촬영 
-def takePhoto(frame):
-    imageName = fileName()
+def takePicture(frame, result):
+    imageName = fileName(result)
     cv2.imwrite(imageName + ".jpg", frame)
+

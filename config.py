@@ -18,10 +18,17 @@ LOWER_DONE_ADDRESS_NG = 'M1581'
 # OK_CLASSES = ["good"]   # 양품 클래스명
 # NG_CLASSES = ["bad"]    # 불량 클래스명
 
-SAVE_PATH = "/Users/giyoma/Desktop/visionCamera/"
+#SAVE_PATH = "/Users/giyoma/Desktop/visionCamera/"
+#저장 경로 윈도우 버전
+SAVE_PATH = ("C:\\Users\\user\\Desktop\\김현아\\PICTURE\\")
 
 #상부
-UPPER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/upperBest.pt")
-#하부
-LOWER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/lowerBest.pt")
+#UPPER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/upperBest.pt")
 
+#상부 윈도우 버전
+UPPER_MODEL = YOLO("C:\\Users\\user\\Desktop\\김현아\\VisionCamera\\dataset\\upperBest.pt")
+#하부
+#LOWER_MODEL = YOLO("/Users/giyoma/Desktop/visionCamera/dataset/lowerBest.pt")
+
+#하부 윈도우 버전 
+LOWER_MODEL = YOLO("C:\\Users\\user\\Desktop\\김현아\\VisionCamera\\dataset\\lowerBest.pt")

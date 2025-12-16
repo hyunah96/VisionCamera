@@ -14,52 +14,6 @@ import config
 def main():
     # YOLO 모델
     
-
-
-        # ---- YOLO 추론 ----
-        # yolo 이미지 추론 결과
-        results = model(frame)[0]
-        judgment = ""  # 초기화
-
-        for box in results.boxes:
-            cls = int(box.cls.item())
-            class_name = model.names[cls]  # 클래스 이름 (good / bad)
-            print("class_name? " ,class_name)
-
-            if class_name in NG_CLASSES:
-                judgment = "NG"
-            elif class_name in OK_CLASSES:
-                judgment = "OK"
-
-            # 바운딩 박스 그리기
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            color = (0, 255, 0) if judgment == "OK" else (0, 0, 255)
-            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
-            cv2.putText(
-                frame,
-                class_name,
-                (x1, y1 - 10),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.7,
-                color,
-                2,
-            )
-
-        # 화면 상단에 판정 표시
-        color = (0, 255, 0) if judgment == "OK" else (0, 0, 255)
-        cv2.putText(
-            frame,
-            f"JUDGMENT: {judgment}",
-            (20, 40),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1.2,
-            color,
-            3,
-        )
-
-        # ---- 화면 표시 ----
-        cv2.imshow("YOLOv8 Realtime Inspection", frame)
-
         # ---- PLC 신호 읽기 (M550) ----
         try:
             print("plc 신호 읽기")
